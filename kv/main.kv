@@ -1,0 +1,37 @@
+#:kivy !ex 2.0.0
+
+<DialogContent>:
+    orientation: "vertical"
+    padding: "8dp"
+    spacing: "8dp"
+
+<ChecklistApp>:
+    
+    MDTextField:
+        id: category_name
+        hint_text: "Nombre de la Categoría"
+
+MDScreen:
+    BoxLayout:
+        orientation: 'vertical'
+        
+        MDToolbar:
+            title: "Checklist del Amor"
+            elevation: 10
+            md_bg_color: app.theme_cls.primary_color
+            left_action_items: [["menu", lambda x: None]]
+            right_action_items: [["plus", lambda x: app.show_add_category_dialog()]]
+        
+        MDScrollView:
+            MDList:
+                id: container
+        
+        MDFloatingActionButton:
+            icon: "plus"
+            pos_hint: {"center_x": .5}
+            on_release: app.add_item()
+
+        MDFloatingActionButton:
+            icon: "plus"
+            pos_hint: {"center_x": .5, "bottom": 1}
+            on_release: app.show_add_category_dialog()
